@@ -5,7 +5,6 @@ from src.vacancies import Vacancy
 
 
 class VacancyError(Exception):
-    """"""
     def __str__(self):
         return 'Используемый объект не является экземпляром класса Vacancy'
 
