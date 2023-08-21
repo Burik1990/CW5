@@ -7,11 +7,13 @@ import requests
 
 
 class ParsingError(Exception):
+    """Ошибка получения данных по API"""
     def __str__(self):
         return 'Ошибка получения данных по API.'
 
 
 class InstantiateCSVError(Exception):
+    """В структуре файла csv не хватает данных"""
     def __str__(self):
         return 'В структуре файла csv не хватает данных'
 
@@ -26,6 +28,7 @@ class HeadHunterAPI:
         self.__employers = {}
 
     def get_request_employer(self, employer_id):
+        """Получение данных по работадателям в формате json"""
         response = requests.get(f'https://api.hh.ru/employers/{employer_id}',
                                 headers=self.__header,
                                 params=self.__params)
@@ -34,6 +37,7 @@ class HeadHunterAPI:
         return response.json()
 
     def get_request_vacancy(self):
+        """Получение данных по вакансиям в формате json"""
         response = requests.get('https://api.hh.ru/vacancies',
                                 headers=self.__header,
                                 params=self.__params)
@@ -42,6 +46,8 @@ class HeadHunterAPI:
         return response.json()['items']
 
     def get_vacancies(self, employer_id, page_count=1):
+        """Получает вакансии по страницам и складывает их в атрибут класса vacancies
+        :param pages_count: количество страниц для парсинга"""
         self.__params = {
             "employer_id": employer_id,
             "page": 0,
@@ -68,6 +74,8 @@ class HeadHunterAPI:
             time.sleep(1)
 
     def get_employer(self, employer_id):
+        """Получает работадателей
+        :param pages_count: количество страниц для парсинга"""
         self.__params = {
             "locale": "RU",
             "host": "hh.ru"
