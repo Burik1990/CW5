@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 import json
 
-from classes.vacancies import Vacancy
-
 
 class VacancyError(Exception):
     def __str__(self):

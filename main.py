@@ -1,8 +1,8 @@
 import csv
 import os
 
-from get_data import HeadHunterAPI
-from DBManager import DBManager
+from classes.get_data import HeadHunterAPI
+from classes.DBManager import DBManager
 
 
 def main():
