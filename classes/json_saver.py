@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import json
 
-from src.vacancies import Vacancy
+from classes.vacancies import Vacancy
 
 
 class VacancyError(Exception):
